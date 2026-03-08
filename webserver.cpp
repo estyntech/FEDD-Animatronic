@@ -190,6 +190,10 @@ static void handleTelemetry() {
 // ---------------------------------------------------------------------------
 // Web Task
 // ---------------------------------------------------------------------------
+static void handleNotFound() {
+  server.send(404, "text/plain", "Not found");
+}
+
 void webTask(void* pvParameters) {
   Serial.printf("[WIFI] Connecting to %s...\n", WIFI_SSID);
   WiFi.mode(WIFI_STA);
@@ -214,8 +218,8 @@ void webTask(void* pvParameters) {
 
   server.on("/",          handleRoot);
   server.on("/telemetry", handleTelemetry);
-  server.on("/config",    handleConfig);  // FIX: new endpoint
-  server.onNotFound([](){ server.send(404, "text/plain", "Not found"); });
+  server.on("/config",    handleConfig);
+  server.onNotFound(handleNotFound);  // FIX: named function, no capture needed
   server.begin();
   Serial.println("[WEB] Server started.");
 
