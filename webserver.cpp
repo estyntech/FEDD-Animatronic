@@ -75,7 +75,7 @@ static const char INDEX_HTML[] =
 "const W = canvas.width, H = canvas.height;"
 "const CX = W/2, CY = H, R = H - 10;"
 "const MAX_DIST_MM = 2000;"
-"let pollInterval = 100;" // FIX: default, overwritten by /config fetch below
+"let pollInterval = 100; /* default, overwritten by /config fetch below */"
 
 "function drawRadar(angle, distMM, state) {"
 "  ctx.clearRect(0, 0, W, H);"
@@ -134,8 +134,6 @@ static const char INDEX_HTML[] =
 "  } catch(e) { addLog('Connection lost...'); }"
 "}"
 
-// FIX: Fetch poll interval from /config endpoint at startup,
-// then begin polling. This replaces the broken macro-in-raw-string approach.
 "async function start() {"
 "  try {"
 "    const res  = await fetch('/config');"
