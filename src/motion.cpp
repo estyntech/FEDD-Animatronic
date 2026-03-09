@@ -1,10 +1,11 @@
 #include "motion.h"
 #include "config.h"
-#include <ESP32Servo.h>
+#include <Servo.h>
 
 static Servo headServo;
 static Servo jawServo;
 
+/*
 void initServos() {
   // FIX: Allocate all 4 timers upfront so ESP32Servo doesn't conflict
   // with the buzzer's LEDC channel or I2C peripherals
@@ -34,4 +35,28 @@ void setHeadAngle(float degrees) {
 void setJawAngle(float degrees) {
   degrees = constrain(degrees, JAW_CLOSED_DEG, JAW_OPEN_DEG);
   jawServo.write((int)degrees);
+}
+*/
+
+void initServos();
+void setHeadAngle(float);
+void setJawAngle(float);
+
+void initServos()
+{
+  headServo.attach(4);
+  jawServo.attach(5);
+
+  setHeadAngle(HEAD_CENTER_DEG);
+  setJawAngle(JAW_CLOSED_DEG);
+}
+
+void setHeadAngle(float degrees)
+{
+  headServo.write(degrees);
+}
+
+void setJawAngle(float degrees)
+{
+  jawServo.write(degrees);
 }
