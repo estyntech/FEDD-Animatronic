@@ -3,3 +3,15 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
+src/buzzer.cpp
+src/buzzer.h
+src/config.h
+src/FEDD_Animatronic.ino
+src/fsm.cpp
+src/fsm.h
+src/leds.cpp
+src/leds.h
+src/sensor.cpp
+src/sensor.h
+src/webserver.cpp
+src/webserver.h
