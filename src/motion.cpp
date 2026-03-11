@@ -53,10 +53,10 @@ void initServos()
 
 void setHeadAngle(float degrees)
 {
-  headServo.write(degrees);
+  headServo.write((int) degrees);
 }
 
 void setJawAngle(float degrees)
 {
-  jawServo.write(degrees);
+  jawServo.write((int) degrees);
 }
